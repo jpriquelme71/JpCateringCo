@@ -37,11 +37,12 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            cursor: pointer;
         }
         .section {
             scroll-margin-top: 80px;
         }
-        #video-background {
+        .video-background {
             position: fixed;
             right: 0;
             bottom: 0;
@@ -57,14 +58,19 @@
 </head>
 <body class="antialiased">
 
-    <!-- Video de fondo -->
-    <video autoplay loop muted playsinline id="video-background">
+    <!-- Video de fondo principal -->
+    <video autoplay loop muted playsinline id="main-video-background" class="video-background">
         <source src="vecteezy_lunch-happy-friends-and-pizza-party-with-food-drinks-and_42647569.mp4" type="video/mp4">
         Tu navegador no soporta el tag de video.
     </video>
 
+    <!-- Video de fondo para la página de café (oculto por defecto) -->
+    <video autoplay loop muted playsinline id="cafe-video-background" class="video-background hidden">
+        <source src="cafecroissant.mov" type="video/mp4">
+        Tu navegador no soporta el tag de video.
+    </video>
+
     <!-- Header & Navigation -->
-    <!-- El fondo del header ahora es más transparente con un blur más suave para que el video se vea mejor. -->
     <header class="bg-white/20 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-gray-800">JP Catering & Co.</a>
@@ -85,115 +91,134 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <!-- Fondo ahora mucho más transparente para que el video se note más. -->
-    <section class="bg-white/20 backdrop-blur-sm py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">JP Catering & Co.</h1>
-            <p class="text-3xl text-gray-500 mb-4">Taste and Convenience for Your Event</p>
-            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones gastronómicas frescas y deliciosas para tus reuniones corporativas y eventos personales. Calidad y presentación en cada entrega.</p>
-            <a href="#ofertas" class="mt-8 inline-block bg-[#D35400] text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition">Explora el Menú / Explore the Menu</a>
+    <!-- Contenedor principal de secciones -->
+    <div id="main-content-container">
+        <!-- Hero Section -->
+        <section class="bg-white/20 backdrop-blur-sm py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">JP Catering & Co.</h1>
+                <p class="text-3xl text-gray-500 mb-4">Taste and Convenience for Your Event</p>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones gastronómicas frescas y deliciosas para tus reuniones corporativas y eventos personales. Calidad y presentación en cada entrega.</p>
+                <a href="#ofertas" class="mt-8 inline-block bg-[#D35400] text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition">Explora el Menú / Explore the Menu</a>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="container mx-auto px-6 py-16">
+
+            <!-- Section 1: Ofertas Principales -->
+            <section id="ofertas" class="section mb-24 bg-white/20 backdrop-blur-sm p-8 rounded-lg">
+                <h2 class="text-4xl font-bold text-center mb-2">Nuestras Ofertas Principales</h2>
+                <p class="text-2xl text-gray-500 text-center mb-4">Our Main Offers</p>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Soluciones versátiles para almuerzos y reuniones. Elige entre nuestras prácticas cajas individuales o un montaje tipo bowl para tu oficina.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card: Sándwiches -->
+                    <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                        <div class="text-5xl mb-4">🥪</div>
+                        <h3 class="text-2xl font-bold mb-2">Sándwiches Gourmet</h3>
+                        <p class="text-gray-600">Una deliciosa variedad con panes artesanales como hoagie, brioche y ciabatta. La opción perfecta para un almuerzo completo y satisfactorio.</p>
+                    </div>
+                    <!-- Card: Empanadas -->
+                    <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                        <div class="text-5xl mb-4">🥟</div>
+                        <h3 class="text-2xl font-bold mb-2">Empanadas Caseras</h3>
+                        <p class="text-gray-600">El sabor tradicional en cada bocado. Ofrecemos de pino (carne y cebolla), queso, y nuestra especial de queso-camarón. Servidas con pico de gallo fresco.</p>
+                    </div>
+                    <!-- Card: Finger Food (Ahora con funcionalidad de link) -->
+                    <div id="cafe-card" class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                        <div class="text-5xl mb-4">☕</div>
+                        <h3 class="text-2xl font-bold mb-2">Café, Churros & Finger Food</h3>
+                        <p class="text-gray-600">Ideal para pausas y reuniones informales. Disfruta de un café de grano, churros calientes y sándwiches pequeños de jamón y queso.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Desayunos Corporativos -->
+            <section id="desayunos" class="section mb-24 bg-white/20 backdrop-blur-sm p-8 rounded-lg">
+                <h2 class="text-4xl font-bold text-center mb-2">Desayunos Corporativos</h2>
+                <p class="text-2xl text-gray-500 text-center mb-4">Corporate Breakfasts</p>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Comienza el día con energía. Menús completos y deliciosos para tus reuniones de equipo, capacitaciones o eventos matutinos.</p>
+                <div class="bg-white/60 p-8 rounded-lg shadow-lg">
+                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                        <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Opciones de Huevo</h4>
+                                <p class="text-sm text-gray-600">En tortilla o croissant, con tocino y queso.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Panqueques con Sirope</h4>
+                                <p class="text-sm text-gray-600">Clásicos y esponjosos, el favorito de todos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Omelettes Personalizados</h4>
+                                <p class="text-sm text-gray-600">Rellenos de queso y tocino, hechos al momento.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Muffins y Biscuits Salados</h4>
+                                <p class="text-sm text-gray-600">Con huevo, queso cheddar y salchicha.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Panadería Fresca</h4>
+                                <p class="text-sm text-gray-600">Muffins de chocolate o arándanos y galletas caseras.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start space-x-3">
+                            <span class="text-xl text-[#D35400] mt-1">✓</span>
+                            <div>
+                                <h4 class="font-semibold">Acompañamientos</h4>
+                                <p class="text-sm text-gray-600">Incluye salchichas y café recién hecho.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Contacto -->
+            <section id="contacto" class="section text-center bg-white/20 backdrop-blur-sm p-8 rounded-lg">
+                <h2 class="text-4xl font-bold mb-2">¿Listo para tu próximo evento?</h2>
+                <p class="text-2xl text-gray-500 mb-4">Ready for your next event?</p>
+                <p class="text-gray-600 mb-8 max-w-xl mx-auto">Contáctanos para obtener una cotización personalizada. Estamos listos para llevar el mejor sabor a tu oficina o celebración.</p>
+                <a href="mailto:hola@cateringco.com" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">Enviar un Correo / Send an Email</a>
+            </section>
+
+        </main>
+    </div> <!-- Fin del contenedor principal de secciones -->
+
+    <!-- Nueva "página" de Café (oculta por defecto) -->
+    <section id="cafe-page" class="hidden py-20 min-h-screen flex items-center justify-center">
+        <div class="bg-white/40 backdrop-blur-md p-12 rounded-lg text-center max-w-2xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Café, Churros & Finger Food</h2>
+            <p class="text-xl text-gray-500 mb-8">El comienzo perfecto para cualquier reunión.</p>
+            <div class="text-left mb-8">
+                <p class="text-lg text-gray-700 mb-4">Disfruta de nuestra selección pensada para pausas y momentos de networking. Todo preparado con ingredientes frescos y el mejor café.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>Café de grano recién molido</li>
+                    <li>Churros calientes con salsa de chocolate o manjar</li>
+                    <li>Sándwiches pequeños de jamón y queso</li>
+                    <li>Jugo de naranja natural</li>
+                    <li>Variedad de té y hierbas</li>
+                </ul>
+            </div>
+            <button id="back-button" class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">
+                Volver
+            </button>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-16">
-
-        <!-- Section 1: Ofertas Principales -->
-        <!-- Fondo más transparente para un efecto flotante. -->
-        <section id="ofertas" class="section mb-24 bg-white/20 backdrop-blur-sm p-8 rounded-lg">
-            <h2 class="text-4xl font-bold text-center mb-2">Nuestras Ofertas Principales</h2>
-            <p class="text-2xl text-gray-500 text-center mb-4">Our Main Offers</p>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Soluciones versátiles para almuerzos y reuniones. Elige entre nuestras prácticas cajas individuales o un montaje tipo bowl para tu oficina.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card: Sándwiches -->
-                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">🥪</div>
-                    <h3 class="text-2xl font-bold mb-2">Sándwiches Gourmet</h3>
-                    <p class="text-gray-600">Una deliciosa variedad con panes artesanales como hoagie, brioche y ciabatta. La opción perfecta para un almuerzo completo y satisfactorio.</p>
-                </div>
-                <!-- Card: Empanadas -->
-                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">🥟</div>
-                    <h3 class="text-2xl font-bold mb-2">Empanadas Caseras</h3>
-                    <p class="text-gray-600">El sabor tradicional en cada bocado. Ofrecemos de pino (carne y cebolla), queso, y nuestra especial de queso-camarón. Servidas con pico de gallo fresco.</p>
-                </div>
-                <!-- Card: Finger Food -->
-                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
-                    <div class="text-5xl mb-4">☕</div>
-                    <h3 class="text-2xl font-bold mb-2">Café, Churros & Finger Food</h3>
-                    <p class="text-gray-600">Ideal para pausas y reuniones informales. Disfruta de un café de grano, churros calientes y sándwiches pequeños de jamón y queso.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 2: Desayunos Corporativos -->
-        <!-- Fondo más transparente en el contenedor principal, y el contenedor interno tiene menos opacidad. -->
-        <section id="desayunos" class="section mb-24 bg-white/20 backdrop-blur-sm p-8 rounded-lg">
-            <h2 class="text-4xl font-bold text-center mb-2">Desayunos Corporativos</h2>
-            <p class="text-2xl text-gray-500 text-center mb-4">Corporate Breakfasts</p>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Comienza el día con energía. Menús completos y deliciosos para tus reuniones de equipo, capacitaciones o eventos matutinos.</p>
-            <div class="bg-white/60 p-8 rounded-lg shadow-lg">
-                <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
-                    <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Opciones de Huevo</h4>
-                            <p class="text-sm text-gray-600">En tortilla o croissant, con tocino y queso.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Panqueques con Sirope</h4>
-                            <p class="text-sm text-gray-600">Clásicos y esponjosos, el favorito de todos.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Omelettes Personalizados</h4>
-                            <p class="text-sm text-gray-600">Rellenos de queso y tocino, hechos al momento.</p>
-                        </div>
-                    </div>
-                     <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Muffins y Biscuits Salados</h4>
-                            <p class="text-sm text-gray-600">Con huevo, queso cheddar y salchicha.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Panadería Fresca</h4>
-                            <p class="text-sm text-gray-600">Muffins de chocolate o arándanos y galletas caseras.</p>
-                        </div>
-                    </div>
-                     <div class="flex items-start space-x-3">
-                        <span class="text-xl text-[#D35400] mt-1">✓</span>
-                        <div>
-                            <h4 class="font-semibold">Acompañamientos</h4>
-                            <p class="text-sm text-gray-600">Incluye salchichas y café recién hecho.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 3: Contacto -->
-        <!-- Fondo más transparente para un efecto flotante. -->
-        <section id="contacto" class="section text-center bg-white/20 backdrop-blur-sm p-8 rounded-lg">
-            <h2 class="text-4xl font-bold mb-2">¿Listo para tu próximo evento?</h2>
-            <p class="text-2xl text-gray-500 mb-4">Ready for your next event?</p>
-            <p class="text-gray-600 mb-8 max-w-xl mx-auto">Contáctanos para obtener una cotización personalizada. Estamos listos para llevar el mejor sabor a tu oficina o celebración.</p>
-            <a href="mailto:hola@cateringco.com" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">Enviar un Correo / Send an Email</a>
-        </section>
-
-    </main>
-
     <!-- Footer -->
-    <!-- El footer ahora es casi transparente. -->
     <footer class="bg-gray-100/20 border-t border-gray-200 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-gray-600">
             <p>&copy; 2025 JP Catering & Co. Todos los derechos reservados.</p>
@@ -202,6 +227,14 @@
     </footer>
 
     <script>
+        // Obtenemos las referencias a los nuevos elementos
+        const mainContentContainer = document.getElementById('main-content-container');
+        const cafePage = document.getElementById('cafe-page');
+        const cafeCard = document.getElementById('cafe-card');
+        const backButton = document.getElementById('back-button');
+        const mainVideo = document.getElementById('main-video-background');
+        const cafeVideo = document.getElementById('cafe-video-background');
+
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -242,6 +275,22 @@
                     link.classList.add('active');
                 }
             });
+        });
+
+        // Evento para mostrar la página de café
+        cafeCard.addEventListener('click', () => {
+            mainContentContainer.classList.add('hidden');
+            cafePage.classList.remove('hidden');
+            mainVideo.classList.add('hidden');
+            cafeVideo.classList.remove('hidden');
+        });
+
+        // Evento para volver a la página principal
+        backButton.addEventListener('click', () => {
+            mainContentContainer.classList.remove('hidden');
+            cafePage.classList.add('hidden');
+            mainVideo.classList.remove('hidden');
+            cafeVideo.classList.add('hidden');
         });
     </script>
 
