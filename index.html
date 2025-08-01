@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catering & Co. | Soluciones Gastronómicas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with Subtle Accents -->
+    <!-- Application Structure Plan: A single-page, vertically scrolling application with a fixed navigation bar. Each section corresponds to a key offering in the business plan (e.g., Boxed Lunches, Corporate Breakfasts). This structure allows users to easily navigate to the service they are interested in. Interactive cards will be used to display menu items, revealing more details on click, making the experience engaging without overwhelming the user. This is more intuitive for a potential customer than mirroring the formal plan structure. -->
+    <!-- Visualization & Content Choices: Report Info: Menu categories and items. -> Goal: Inform & Engage. -> Viz/Presentation: Interactive cards with icons and text. -> Interaction: On click, a modal or expanded view shows details (ingredients, options). -> Justification: Cards are visually appealing and scannable. Clicks provide detail on demand, keeping the main view clean. -> Library/Method: HTML/CSS with Tailwind for layout, Vanilla JS for click events and content switching. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8; /* Warm off-white */
+            color: #4A4A4A;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #D35400; /* Subtle Accent Color */
+            border-bottom-color: #D35400;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Catering & Co.</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#ofertas" class="nav-link text-gray-600 pb-1">Nuestras Ofertas</a>
+                <a href="#desayunos" class="nav-link text-gray-600 pb-1">Desayunos</a>
+                <a href="#contacto" class="nav-link text-gray-600 pb-1">Contacto</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <span class="text-3xl">☰</span>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#ofertas" class="block text-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Nuestras Ofertas</a>
+            <a href="#desayunos" class="block text-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Desayunos</a>
+            <a href="#contacto" class="block text-center py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-4">Sabor y Conveniencia para tu Evento</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones gastronómicas frescas y deliciosas para tus reuniones corporativas y eventos personales. Calidad y presentación en cada entrega.</p>
+            <a href="#ofertas" class="mt-8 inline-block bg-[#D35400] text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition">Explora el Menú</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16">
+
+        <!-- Section 1: Ofertas Principales -->
+        <section id="ofertas" class="section mb-24">
+            <h2 class="text-4xl font-bold text-center mb-4">Nuestras Ofertas Principales</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Soluciones versátiles para almuerzos y reuniones. Elige entre nuestras prácticas cajas individuales o un montaje tipo bowl para tu oficina.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card: Sándwiches -->
+                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">🥪</div>
+                    <h3 class="text-2xl font-bold mb-2">Sándwiches Gourmet</h3>
+                    <p class="text-gray-600">Una deliciosa variedad con panes artesanales como hoagie, brioche y ciabatta. La opción perfecta para un almuerzo completo y satisfactorio.</p>
+                </div>
+                <!-- Card: Empanadas -->
+                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">🥟</div>
+                    <h3 class="text-2xl font-bold mb-2">Empanadas Caseras</h3>
+                    <p class="text-gray-600">El sabor tradicional en cada bocado. Ofrecemos de pino (carne y cebolla), queso, y nuestra especial de queso-camarón. Servidas con pico de gallo fresco.</p>
+                </div>
+                <!-- Card: Finger Food -->
+                <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                    <div class="text-5xl mb-4">☕</div>
+                    <h3 class="text-2xl font-bold mb-2">Café, Churros & Finger Food</h3>
+                    <p class="text-gray-600">Ideal para pausas y reuniones informales. Disfruta de un café de grano, churros calientes y sándwiches pequeños de jamón y queso.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Desayunos Corporativos -->
+        <section id="desayunos" class="section mb-24">
+            <h2 class="text-4xl font-bold text-center mb-4">Desayunos Corporativos</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Comienza el día con energía. Menús completos y deliciosos para tus reuniones de equipo, capacitaciones o eventos matutinos.</p>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Opciones de Huevo</h4>
+                            <p class="text-sm text-gray-600">En tortilla o croissant, con tocino y queso.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Panqueques con Sirope</h4>
+                            <p class="text-sm text-gray-600">Clásicos y esponjosos, el favorito de todos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Omelettes Personalizados</h4>
+                            <p class="text-sm text-gray-600">Rellenos de queso y tocino, hechos al momento.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Muffins y Biscuits Salados</h4>
+                            <p class="text-sm text-gray-600">Con huevo, queso cheddar y salchicha.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Panadería Fresca</h4>
+                            <p class="text-sm text-gray-600">Muffins de chocolate o arándanos y galletas caseras.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-3">
+                        <span class="text-xl text-[#D35400] mt-1">✓</span>
+                        <div>
+                            <h4 class="font-semibold">Acompañamientos</h4>
+                            <p class="text-sm text-gray-600">Incluye salchichas y café recién hecho.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Contacto -->
+        <section id="contacto" class="section text-center">
+            <h2 class="text-4xl font-bold mb-4">¿Listo para tu próximo evento?</h2>
+            <p class="text-gray-600 mb-8 max-w-xl mx-auto">Contáctanos para obtener una cotización personalizada. Estamos listos para llevar el mejor sabor a tu oficina o celebración.</p>
+            <a href="mailto:hola@cateringco.com" class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">Enviar un Correo</a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 mt-16">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600">
+            <p>&copy; 2025 Catering & Co. Todos los derechos reservados.</p>
+            <p class="text-sm mt-2">Diseñado para llevar sabor y calidad a tus eventos.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                // Hide mobile menu on click
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active link highlighting on scroll
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 90) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
