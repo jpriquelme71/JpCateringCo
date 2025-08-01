@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JP Catering & Co. | Soluciones Gastronómicas</title>
+    <title>JP Catering & Co. | Soluciones Gastronómicas en Orlando, FL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,7 +67,7 @@
     <!-- Header & Navigation -->
     <header class="bg-white/20 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">JP Catering & Co.</a>
+            <a href="#" class="text-2xl font-bold text-gray-800">JP Catering & Co. <span class="text-xl text-gray-500 hidden sm:inline">| Orlando, FL</span></a>
             <div class="hidden md:flex space-x-8">
                 <a href="#ofertas" class="nav-link text-gray-600 pb-1">Nuestras Ofertas / Our Offers</a>
                 <a href="#desayunos" class="nav-link text-gray-600 pb-1">Desayunos / Breakfasts</a>
@@ -92,7 +92,7 @@
             <div class="container mx-auto px-6 text-center">
                 <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mb-2">JP Catering & Co.</h1>
                 <p class="text-3xl text-gray-500 mb-4">Taste and Convenience for Your Event</p>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones gastronómicas frescas y deliciosas para tus reuniones corporativas y eventos personales. Calidad y presentación en cada entrega.</p>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ofrecemos soluciones gastronómicas frescas y deliciosas para tus reuniones corporativas y eventos personales en Orlando, FL. Calidad y presentación en cada entrega.</p>
                 <a href="#ofertas" class="mt-8 inline-block bg-[#D35400] text-white font-bold py-3 px-8 rounded-full hover:bg-opacity-90 transition">Explora el Menú / Explore the Menu</a>
             </div>
         </section>
@@ -107,18 +107,18 @@
                 <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Soluciones versátiles para almuerzos y reuniones. Elige entre nuestras prácticas cajas individuales o un montaje tipo bowl para tu oficina.</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Card: Sándwiches -->
-                    <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                    <div id="sandwiches-card" class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
                         <div class="text-5xl mb-4">🥪</div>
                         <h3 class="text-2xl font-bold mb-2">Sándwiches Gourmet</h3>
                         <p class="text-gray-600">Una deliciosa variedad con panes artesanales como hoagie, brioche y ciabatta. La opción perfecta para un almuerzo completo y satisfactorio.</p>
                     </div>
                     <!-- Card: Empanadas -->
-                    <div class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
+                    <div id="empanadas-card" class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
                         <div class="text-5xl mb-4">🥟</div>
                         <h3 class="text-2xl font-bold mb-2">Empanadas Caseras</h3>
                         <p class="text-gray-600">El sabor tradicional en cada bocado. Ofrecemos de pino (carne y cebolla), queso, y nuestra especial de queso-camarón. Servidas con pico de gallo fresco.</p>
                     </div>
-                    <!-- Card: Finger Food (Ahora con funcionalidad de link) -->
+                    <!-- Card: Café -->
                     <div id="cafe-card" class="card rounded-lg overflow-hidden shadow-md p-6 text-center">
                         <div class="text-5xl mb-4">☕</div>
                         <h3 class="text-2xl font-bold mb-2">Café, Churros & Finger Food</h3>
@@ -191,6 +191,54 @@
         </main>
     </div> <!-- Fin del contenedor principal de secciones -->
 
+    <!-- Nueva "página" de Sándwiches (oculta por defecto) -->
+    <section id="sandwiches-page" class="hidden py-20 min-h-screen flex items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-6">
+            <!-- Placeholder para la imagen de sándwiches -->
+            <img src="https://placehold.co/600x400/D35400/FFFFFF?text=Imagen+de+S%C3%A1ndwiches" alt="Imagen de sándwiches" class="rounded-lg shadow-xl mb-8 max-w-full sm:max-w-md">
+            <div class="bg-white/80 p-8 rounded-lg shadow-lg">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Sándwiches Gourmet</h2>
+                <p class="text-xl text-gray-700 mb-8">Sabores únicos en panes artesanales.</p>
+                <div class="text-left mb-8">
+                    <p class="text-lg text-gray-600 mb-4">Elige entre nuestra exquisita selección de sándwiches, todos preparados con ingredientes frescos y de la más alta calidad.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Sándwich de pavo con queso provolone y salsa de arándanos</li>
+                        <li>Sándwich de pollo con pesto y queso suizo</li>
+                        <li>Sándwich vegetariano con hummus y vegetales asados</li>
+                        <li>Servidos con ensalada de la casa o papas fritas</li>
+                    </ul>
+                </div>
+                <button id="sandwiches-back-button" class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">
+                    Volver
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nueva "página" de Empanadas (oculta por defecto) -->
+    <section id="empanadas-page" class="hidden py-20 min-h-screen flex items-center justify-center relative">
+        <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-6">
+            <!-- Placeholder para la imagen de empanadas -->
+            <img src="https://placehold.co/600x400/D35400/FFFFFF?text=Imagen+de+Empanadas" alt="Imagen de empanadas" class="rounded-lg shadow-xl mb-8 max-w-full sm:max-w-md">
+            <div class="bg-white/80 p-8 rounded-lg shadow-lg">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Empanadas Caseras</h2>
+                <p class="text-xl text-gray-700 mb-8">El sabor de la tradición en cada bocado.</p>
+                <div class="text-left mb-8">
+                    <p class="text-lg text-gray-600 mb-4">Nuestras empanadas son preparadas con recetas tradicionales y el mejor relleno, perfectas para cualquier ocasión.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                        <li>Pino (carne molida y cebolla)</li>
+                        <li>Queso (mezcla de quesos fundidos)</li>
+                        <li>Queso y camarón (nuestra especialidad)</li>
+                        <li>Acompañadas con pico de gallo casero</li>
+                    </ul>
+                </div>
+                <button id="empanadas-back-button" class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">
+                    Volver
+                </button>
+            </div>
+        </div>
+    </section>
+    
     <!-- Nueva "página" de Café (oculta por defecto) -->
     <section id="cafe-page" class="hidden py-20 min-h-screen flex items-center justify-center relative">
         <div class="flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-6">
@@ -208,28 +256,38 @@
                         <li>Variedad de té y hierbas</li>
                     </ul>
                 </div>
-                <button id="back-button" class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">
+                <button id="cafe-back-button" class="mt-6 bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition">
                     Volver
                 </button>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
     <footer class="bg-gray-100/20 border-t border-gray-200 mt-16">
         <div class="container mx-auto px-6 py-8 text-center text-gray-600">
             <p>&copy; 2025 JP Catering & Co. Todos los derechos reservados.</p>
-            <p class="text-sm mt-2">Diseñado para llevar sabor y calidad a tus eventos.</p>
+            <p class="text-sm mt-2">Orgullosamente sirviendo el área de Orlando, FL.</p>
         </div>
     </footer>
 
     <script>
-        // Obtenemos las referencias a los nuevos elementos
+        // Obtenemos las referencias a los contenedores principales y los elementos interactivos
         const mainContentContainer = document.getElementById('main-content-container');
-        const cafePage = document.getElementById('cafe-page');
-        const cafeCard = document.getElementById('cafe-card');
-        const backButton = document.getElementById('back-button');
         const mainVideo = document.getElementById('main-video-background');
+
+        const cafeCard = document.getElementById('cafe-card');
+        const sandwichesCard = document.getElementById('sandwiches-card');
+        const empanadasCard = document.getElementById('empanadas-card');
+        
+        const cafePage = document.getElementById('cafe-page');
+        const sandwichesPage = document.getElementById('sandwiches-page');
+        const empanadasPage = document.getElementById('empanadas-page');
+
+        const cafeBackButton = document.getElementById('cafe-back-button');
+        const sandwichesBackButton = document.getElementById('sandwiches-back-button');
+        const empanadasBackButton = document.getElementById('empanadas-back-button');
 
         // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -254,7 +312,7 @@
 
         // Active link highlighting on scroll
         const sections = document.querySelectorAll('.section');
-        const navLinks = document.querySelectorAll('.nav-link');
+        const navLinks = document.querySelectorAll('.nav-querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -273,18 +331,46 @@
             });
         });
 
-        // Evento para mostrar la página de café
-        cafeCard.addEventListener('click', () => {
+        // Función para mostrar una página específica
+        function showPage(pageToShow) {
             mainContentContainer.classList.add('hidden');
-            cafePage.classList.remove('hidden');
             mainVideo.classList.add('hidden');
+            pageToShow.classList.remove('hidden');
+        }
+
+        // Función para volver a la página principal
+        function backToMain() {
+            mainContentContainer.classList.remove('hidden');
+            mainVideo.classList.remove('hidden');
+            cafePage.classList.add('hidden');
+            sandwichesPage.classList.add('hidden');
+            empanadasPage.classList.add('hidden');
+        }
+
+        // Eventos para mostrar las páginas al hacer clic en las tarjetas
+        sandwichesCard.addEventListener('click', () => {
+            showPage(sandwichesPage);
         });
 
-        // Evento para volver a la página principal
-        backButton.addEventListener('click', () => {
-            mainContentContainer.classList.remove('hidden');
-            cafePage.classList.add('hidden');
-            mainVideo.classList.remove('hidden');
+        empanadasCard.addEventListener('click', () => {
+            showPage(empanadasPage);
+        });
+
+        cafeCard.addEventListener('click', () => {
+            showPage(cafePage);
+        });
+
+        // Eventos para volver a la página principal al hacer clic en los botones "Volver"
+        sandwichesBackButton.addEventListener('click', () => {
+            backToMain();
+        });
+
+        empanadasBackButton.addEventListener('click', () => {
+            backToMain();
+        });
+
+        cafeBackButton.addEventListener('click', () => {
+            backToMain();
         });
     </script>
 
